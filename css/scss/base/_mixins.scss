@@ -1,0 +1,211 @@
+/// breakpoints mixin usage
+/// selector{
+///   height:100px;
+///   @include breakpoint($tablet){
+///     height:50px;
+///   }
+/// }
+
+@mixin breakpoint($rule){
+	@if ($rule == $retina or $rule == $retina-hd){
+    	@media only screen and ( min-resolution : #{$retina*96} ), ( -webkit-min-device-pixel-ratio : #{$retina} ){
+     		@content;
+    	}
+  	}
+  	@else{
+    	@media only screen and (max-width: #{$rule}){
+     		@content;
+    	}  
+	}
+}
+@mixin vertical-breakpoint($rule){
+	@media only screen and (max-height:$rule) {
+		@content
+	}
+}
+@mixin min-width-breakpoint($rule){
+	@media only screen and (min-width:$rule) {
+		@content
+	}
+}
+
+
+// Other Mixins
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@mixin clearfix {
+    &:after {
+        content: " ";
+        display: block;
+        clear: both;
+    }
+}
+@mixin vertical-align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+@mixin vertical-align-absolute {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+@mixin border-radius($border-width) {
+    -webkit-border-radius:$border-width;
+    -moz-border-radius:$border-width;
+    border-radius:$border-width;
+}
+@mixin box-sizing($type: border-box) {
+    -webkit-box-sizing: $type;
+    -moz-box-sizing: $type;
+    box-sizing: $type;
+}
+@mixin box-shadow($shadows...) {
+	-webkit-box-shadow: $shadows;
+	-moz-box-shadow: $shadows;
+	box-shadow: $shadows;
+}
+@mixin text-shadow($shadows...) {
+	-webkit-text-shadow: $shadows;
+	text-shadow: $shadows;
+}
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	$opacityIE: $opacity * 100;
+	filter: alpha(opacity=$opacityIE);
+}
+@mixin font-size($size: 24, $base: 16) {
+	font-size: $size + px;
+	font-size: ($size / $base) * 1rem;
+}
+@mixin placeholder {
+	::-webkit-input-placeholder {@content}
+	::-moz-placeholder          {opacity: 1; @content}
+	:-moz-placeholder           {@content}
+	:-ms-input-placeholder      {@content}
+	.placeholder                {@content}
+}
+@mixin transform-origin ($origin) {
+	-webkit-transform-origin  : $origin;
+	-moz-transform-origin     : $origin;
+	-o-transform-origin       : $origin;
+	transform-origin          : $origin;
+}
+@mixin transform ($deg) {
+	transform         : $deg;
+	-moz-transform    : $deg;
+	-ms-transform     : $deg;
+	-o-transform      : $deg;
+	-webkit-transform : $deg;
+}
+@mixin scale ($multiplier) {
+	transform         : scale($multiplier);
+	-moz-transform    : scale($multiplier);
+	-ms-transform     : scale($multiplier);
+	-o-transform      : scale($multiplier);
+	-webkit-transform : scale($multiplier);
+}
+@mixin scaleX ($multiplier) {
+	transform         : scaleX($multiplier);
+	-moz-transform    : scaleX($multiplier);
+	-ms-transform     : scaleX($multiplier);
+	-o-transform      : scaleX($multiplier);
+	-webkit-transform : scaleX($multiplier);
+}
+@mixin scaleY ($multiplier) {
+	transform         : scaleY($multiplier);
+	-moz-transform    : scaleY($multiplier);
+	-ms-transform     : scaleY($multiplier);
+	-o-transform      : scaleY($multiplier);
+	-webkit-transform : scaleY($multiplier);
+}
+@mixin rotate ($deg) {
+	-moz-transform    : rotate($deg);
+	-ms-transform     : rotate($deg);
+	-o-transform      : rotate($deg);
+	-webkit-transform : rotate($deg);
+}
+@mixin skew ($deg, $deg2) {
+	transform  : skew($deg, $deg2);
+	-moz-transform    : skew($deg, $deg2);
+	-ms-transform     : skew($deg, $deg2);
+	-o-transform      : skew($deg, $deg2);
+	-webkit-transform : skew($deg, $deg2);
+}
+@mixin flexbox {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+@mixin transition($transition...) {
+    -moz-transition:    $transition;
+    -o-transition:      $transition;
+    -webkit-transition: $transition;
+    transition:         $transition;
+}
+@mixin transition-property($property...) {
+    -moz-transition-property:    $property;
+    -o-transition-property:      $property;
+    -webkit-transition-property: $property;
+    transition-property:         $property;
+}
+@mixin transition-duration($duration...) {
+    -moz-transition-property:    $duration;
+    -o-transition-property:      $duration;
+    -webkit-transition-property: $duration;
+    transition-property:         $duration;
+}
+@mixin transition-timing-function($timing...) {
+    -moz-transition-timing-function:    $timing;
+    -o-transition-timing-function:      $timing;
+    -webkit-transition-timing-function: $timing;
+    transition-timing-function:         $timing;
+}
+@mixin transition-delay($delay...) {
+    -moz-transition-delay:    $delay;
+    -o-transition-delay:      $delay;
+    -webkit-transition-delay: $delay;
+    transition-delay:         $delay;
+}
+@mixin box-shadow($h, $v, $blur, $spread, $color) {
+    -webkit-box-shadow: $h $v $blur $spread $color;
+    -moz-box-shadow: $h $v $blur $spread $color;
+    box-shadow: $h $v $blur $spread $color;
+}
+@mixin button-transition(){
+    -moz-transition:      background 0.3s;
+    -o-transition:        background 0.3s;
+    -webkit-transition:   background 0.3s;
+    transition:           background 0.3s;
+}
+@mixin background-2x($path, $ext: "png", $w: auto, $h: auto, $pos: left top, $repeat: no-repeat) {
+	$at1x_path: "#{$path}.#{$ext}";
+	$at2x_path: "#{$path}@2x.#{$ext}";
+	background-image: url("#{$at1x_path}");
+	background-size: $w $h;
+	background-position: $pos;
+	background-repeat: $repeat;
+  	@media all and (-webkit-min-device-pixel-ratio : 1.5),
+  	all and (-o-min-device-pixel-ratio: 3/2),
+  	all and (min--moz-device-pixel-ratio: 1.5),
+  	all and (min-device-pixel-ratio: 1.5) {
+		background-image: url("#{$at2x_path}"); 
+	}
+}
+// useage of background 2x
+// div.background {
+//   @include background-2x( 'path/to/image', 'jpg', 100px, 100px, center center, repeat-x );
+// }
+@mixin clearfix() {
+	&::after {
+    	display: block;
+    	content: "";
+    	clear: both;
+	}
+}

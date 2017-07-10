@@ -1,0 +1,66 @@
+html {
+	font-size: 10px;
+	@include breakpoint($tablet){
+		font-size: 9.25px;
+	}
+	@include breakpoint($mobile){
+		font-size: 8.9px;
+	}
+}
+body {
+	font-family: $base-ff;
+	font-size: 1.6rem;
+	color: $gray;
+	font-weight: 400;
+	background: $backing-gray;
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;	
+  	&.overflow {
+  		overflow: hidden;
+  	}
+}
+.preload * {
+	-webkit-transition: none !important;
+	-moz-transition: none !important;
+	-ms-transition: none !important;
+	-o-transition: none !important;
+}
+footer {
+	
+}
+h1, h2, h3, h4, h5 {
+	margin: 0;
+}
+h3 {
+	font-size: 3.1rem;
+}
+p {
+	line-height: 2.7rem;
+	margin: 0 0 1.5rem;
+}
+a {
+	&:hover {
+		
+	}
+}
+.clear {
+	clear: both;
+	height: 1px;
+	overflow: hidden;
+	margin-top: -1px;
+}
+.push {
+	float: right;
+}
+.pull {
+	float: left;
+}
+form {
+	margin: 0;
+	padding: 0;
+	input {
+		border: none;
+		margin: 0;
+		padding: 0;
+	}
+}
